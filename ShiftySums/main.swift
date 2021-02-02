@@ -16,18 +16,28 @@ print("===========")
 // INPUT
 
 // Get the number to be shifted
-let n = Int(readLine()!)!
+var n = Int.collectInput(withPrompt: "Number to be shifted:",
+                         minimum: 0,
+                         maximum: nil)
 
 // How many times should we shift?
-let k = 3
+var k = Int.collectInput(withPrompt: "How many times to be shifted:",
+                         minimum: 0,
+                         maximum: nil)
 
 // PROCESS
-
-// Shift the given number "k" number of times
 var output = n
-output += n * 10
-output += n * 10 * 10
-output += n * 10 * 10 * 10
+func shift(n: Int, k: Int) -> Int {
+    for i in 1...k {
+        print("i is \(i)")
+        var toAdd = n
+        // Multiply by 10 "i" times
+        for j in 1...i {
+            toAdd *= 10
+        }
+        output += toAdd
+    }
+    return output
+}
 
-// OUTPUT
-print(output)
+
